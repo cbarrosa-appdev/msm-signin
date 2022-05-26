@@ -18,6 +18,7 @@
       </div>
     </div>
 <hr>
+<%if session.fetch(:user_id)!=nil %>
 <%current_user_bookmark=Bookmark.where({:movie_id=>@the_movie.id, :user_id=>session.fetch(:user_id)})%>
 <% the_bookmark=current_user_bookmark.first%>
 
@@ -30,7 +31,9 @@
       </button>
     </form>
   <%else%>
-  <a href="/delete_bookmark/<%=the_bookmark.id%>">Unbookmark</a>
+  <a href="/delete_bookmark/<%=the_bookmark.id%>">Un-bookmark</a>
+  <%end%>
+  <%else%>
   <%end%>
     <dl>
       <dt>
